@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "MyFiles";
+}
+
+@model List<fms.ViewModels.DosyaModel>
+
+<h2 class="text-center mb-4">My Files</h2>
+
+<div class="table-container">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Dosya Id</th>
+                <th scope="col">Dosya Adı</th>
+                <th scope="col">Açıklama</th>
+                <th scope="col">Dosya Yolu</th>
+                <th scope="col">Yükleme Tarihi</th>
+                <th scope="col">İşlemler</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dosya in Model)
+            {
+                <tr>
+                    <td>@dosya.DosyaId</td>
+                    <td>@dosya.DosyaName</td>
+                    <td>@dosya.DosyaDescription</td>
+                    <td>@dosya.DosyaPath</td>
+                    <td>@dosya.DosyaTime</td>
+                    <td>
+                        <form method="post" action="@Url.Action("DeleteFile", "FileUploadController")">
+                            <!-- "DosyaController" kısmını kendi Controller adınıza göre değiştirin -->
+                            <input type="hidden" name="dosyaId" value="@dosya.DosyaId" />
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table-container {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .table th, .table td {
+        text-align: center;
+    }
+
+    .table thead th {
+        vertical-align: middle;
+    }
+
+    h2 {
+        color: #007bff;
+    }
+</style>

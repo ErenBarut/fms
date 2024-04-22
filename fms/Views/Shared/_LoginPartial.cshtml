@@ -1,0 +1,38 @@
+﻿﻿﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor Accessor
+<ul class="navbar-nav">
+    @if (User.Identity.IsAuthenticated)
+    {
+       
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="UserPage">
+            Merhaba @User.Identity.Name
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="FileUpload" asp-action="MyFiles">
+                Dosyalarım
+            </a>
+        </li>
+        
+
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="FileUpload" asp-action="Index">Dosya Yükle</a>
+
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Logout">Oturumu Kapat</a>
+        </li>
+
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Login">Oturum Aç</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Register">Kayıt Ol</a>
+        </li>
+
+    }
+</ul>

@@ -1,0 +1,90 @@
+﻿@model fms.ViewModels.FileViewModel
+@{
+    ViewData["Title"] = "Dosya";
+}
+<img id="pcbackground" src="~/lib/photos/dosya12.png" alt="Computer Desk" style="width:1525px; width:100% ; height:auto; display:block; margin-left:auto; margin-right:auto;" />
+<h2 class="text-center mb-4">Dosya Listesi</h2>
+
+<div class="upload-container mb-4">
+    @using (Html.BeginForm("Upload", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="mb-3">
+            <label for="File" class="form-label">Dosya Seç:</label>
+            <input type="file" id="File" name="File" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="Description" class="form-label">Açıklama:</label>
+            <input type="text" id="Description" name="Description" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Yükle</button>
+    }
+</div>
+
+ <div class="file-container">
+    @if (Model != null && Model.Files.Any())
+    {
+        @foreach (var file in Model.Files)
+        {
+            <div class="file-item">
+                <div class="file-image">
+                    <img src="~/uploads/@file.FileName" alt="Dosya Resmi" class="img-fluid" />
+                </div>
+                <div class="file-details mt-2">
+                    <p class="file-description">Açıklama: @file.Description</p>
+                    <div class="file-actions">
+                        <a asp-controller="FileUpload" asp-action="Download" asp-route-fileName="@file.FileName" class="btn btn-success">İndir</a>
+                        <a asp-controller="FileUpload" asp-action="Delete" asp-route-fileName="@file.FileName" class="btn btn-danger">Sil</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="text-center">Dosya mevcut değil.</div>
+    }
+</div>
+
+<style>
+    /* Bu stil bilgilerini direkt olarak view dosyanıza ekleyebilirsiniz */
+    .upload-container {
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .file-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .file-item {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        width: calc(33.33% - 20px); /* Üç sıralı, her biri %33 genişliğinde */
+        box-sizing: border-box;
+    }
+
+    .file-image img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .file-details {
+        text-align: left;
+    }
+
+    .file-description {
+        margin-bottom: 10px;
+    }
+
+    .file-actions {
+        display: flex;
+        justify-content: space-around;
+    }
+</style>

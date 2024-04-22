@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Gizlilik Politikası";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        max-width: 800px;
+        margin-top: 50px;
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .card-body {
+        color: #333;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #17a2b8;
+    }
+</style>
+
+<div class="container">
+    <div class="card mb-4">
+        <img src="~/lib/photos/gizlilik.png" alt="Computer Desk" class="card-img-top">
+        <div class="card-body">
+            <h1 class="card-title text-center">@ViewData["Title"]</h1>
+
+            <h2>Toplanan Bilgiler</h2>
+            <p>Sitemizi kullanırken, belirli kişisel bilgileri toplamaktayız. Bu bilgiler, ziyaret ettiğiniz sayfalar, tarayıcı türü, IP adresiniz ve diğer benzer bilgileri içerebilir.</p>
+
+            <h2>Çerezler</h2>
+            <p>Web sitemizde çerezler kullanıyoruz. Çerezler, sitemizi daha etkili bir şekilde kullanmanıza yardımcı olan küçük metin dosyalarıdır. Çerezleri reddetme veya silme seçeneğiniz her zaman mevcuttur.</p>
+
+            <h2>Kişisel Bilgi Kullanımı</h2>
+            <p>Toplanan kişisel bilgiler, sitemizi geliştirmek ve kullanıcı deneyimini özelleştirmek amacıyla kullanılmaktadır. Bu bilgileri üçüncü taraflarla paylaşmıyoruz.</p>
+
+            <h2>Güvenlik</h2>
+            <p>Kişisel bilgilerinizi korumak için endüstri standardı güvenlik önlemlerini kullanıyoruz. Ancak, internet üzerinden iletişimde her zaman riskler bulunmaktadır.</p>
+
+            <h2>Diğer Web Siteleri ve Hizmetler</h2>
+            <p>Web sitemiz, diğer web sitelerine veya hizmetlere bağlantılar içerebilir. Bu bağlantıları kullanırken, bu sitelerin gizlilik uygulamalarını incelemenizi öneririz.</p>
+
+            <h2>Gizlilik Politikası Değişiklikleri</h2>
+            <p>Bu gizlilik politikası zaman zaman güncellenebilir. Güncellemeleri önceden bildirmeksizin yapabiliriz, bu nedenle düzenli olarak kontrol etmenizi öneririz.</p>
+        </div>
+    </div>
+</div>

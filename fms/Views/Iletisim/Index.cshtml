@@ -1,0 +1,129 @@
+﻿@model IletisimFormuModel
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>İletişim Formu</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+
+        #pcbackground {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        hr {
+            border-color: #28a745;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            margin-bottom: 5px;
+            color: #6c757d;
+        }
+
+        .alert {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="pcbackground" src="~/lib/photos/iletisim.png" alt="Computer Desk" />
+        <h2 class="text-center">İletişim Formu</h2>
+
+        @if (TempData["Mesaj"] != null)
+        {
+            <div class="alert">
+                @TempData["Mesaj"]
+            </div>
+        }
+
+        <form asp-action="Index" method="post">
+            <div class="form-group">
+                <label asp-for="Ad">Ad</label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email">E-posta</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mesaj">Mesaj</label>
+                <textarea asp-for="Mesaj" class="form-control"></textarea>
+                <span asp-validation-for="Mesaj" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Gönder</button>
+        </form>
+
+        <h1 class="mt-5">Adres</h1>
+        <br />
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11517.344736160981!2d30.662268258036793!3d36.89689960462329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c391dad00dd6a1%3A0x325ca1699d1a559f!2sAkdeniz%20%C3%9Cniversitesi%20Teknik%20Bilimler%20Myo!5e0!3m2!1str!2str!4v1704670000780!5m2!1str!2str" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <hr />
+        <h1>İletişim</h1>
+        <p>Mail: <a href="mailto:erenbarut5566@gmail.com">erenbarut5566@gmail.com</a></p>
+        <p>Telefon: <a href="tel:+905555555555">0555 555 55 55</a></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

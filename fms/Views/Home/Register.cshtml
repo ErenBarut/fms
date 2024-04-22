@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    
+}
+@model fms.ViewModels.RegisterModel
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card mt-5">
+            <div class="card-header bg-success text-white">
+                <h3>Kayıt Ol</h3>
+            </div>
+
+            <div class="text-center">
+               
+                <img src="~/lib/photos/den.jpg" alt="Bilgilendirici Resim" class="img-fluid mb-3" />
+
+             
+                <form asp-action="Register" method="post" enctype="multipart/form-data">
+                    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="mb-3">
+                        <label asp-for="FullName" class="form-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input type="password" asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PasswordConfirm" class="form-label"></label>
+                        <input type="password" asp-for="PasswordConfirm" class="form-control" />
+                        <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                    </div>
+                    <!-- Kaydet Butonu -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Kart Altbilgisi -->
+            <div class="card-footer">
+                <p class="text-center">Zaten bir hesabınız var mı? <a asp-action="Login">Oturum Aç</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

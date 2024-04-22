@@ -1,0 +1,123 @@
+﻿@*  @{
+    ViewData["Title"] = "GetUserList";
+    Layout = "~/Views/Shared/_LayoutAdminLTE.cshtml";
+}
+@model List<fms.ViewModels.UserModel>
+<h1>Üyeler</h1>
+<div class="table-container">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>Adı Soyadı</th>
+                <th>Kullanıcı Adı</th>
+                <th>E-Posta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FullName</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+ *@
+
+
+@{
+    ViewData["Title"] = "GetUserList";
+    Layout = "~/Views/Shared/_LayoutAdminLTE.cshtml";
+}
+@model List<fms.ViewModels.UserModel>
+
+<h1>Üyeler</h1>
+@* <div class="table-container">
+    <div class="table-container">
+        <table class="table custom-table">
+            <thead>
+                <tr>
+                    <th>Adı Soyadı</th>
+                    <th>Kullanıcı Adı</th>
+                    <th>E-Posta</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FullName</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> *@
+
+
+<h1>Üyeler</h1>
+<div class="table-container">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>Adı Soyadı</th>
+                <th>Kullanıcı Adı</th>
+                <th>E-Posta</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FullName</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <!-- Eğer silme butonu doğru bir şekilde oluşturulmuşsa bu satırda bir şeyler olmalı -->
+                        @if (item.Id != null)
+                        {
+                            <button type="button" class="btn btn-danger" onclick="deleteUser('@item.Id')">Sil</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function deleteUser(userId) {
+        var confirmDelete = confirm("Bu kullanıcıyı silmek istediğinizden emin misiniz?");
+        if (confirmDelete) {
+            $.ajax({
+                url: '/Admin/DeleteUser', // Controller ve Action'ın uygun URL'si
+                type: 'POST',
+                data: { userId: userId },
+                success: function (result) {
+                    console.log(result);
+                    // Silme işlemi başarıyla gerçekleştiğinde sayfayı yenileme veya güncelleme
+                    location.reload();
+                },
+                error: function (error) {
+                    console.error("Silme işlemi başarısız: ", error);
+                }
+            });
+        }
+    }
+</script>
+
+</script>
+<style>
+    .custom-table {
+        width: 70%; /* Örnek bir genişlik, istediğiniz değeri ayarlayabilirsiniz */
+        margin: 0 0 0 auto; /* Tabloyu sayfa genişliği içinde ortala */
+    }
+</style>

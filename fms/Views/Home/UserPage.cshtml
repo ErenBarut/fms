@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "UserPage";
+}
+@model fms.ViewModels.UserModel
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    
+
+    .badge-info {
+        background-color: #28a745;
+    }
+
+    .card {
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .card-header {
+        background-color: #17a2b8;
+        color: #fff;
+        border-bottom: none;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        color: #333;
+    }
+
+    .table {
+        border: 1px solid #dee2e6;
+    }
+
+        .table th, .table td {
+            border: none;
+        }
+
+        .table th {
+            background-color: #17a2b8;
+            color: #fff;
+        }
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">Üye Sayfası</h2>
+            @if (Model.Role == "Uye")
+            {
+                <span class="badge badge-info">Normal Üye</span>
+            }
+            @if (Model.Role == "Admin")
+            {
+                <span class="badge badge-info">Yönetici Üye</span>
+            }
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">Adı Soyadı</th>
+                    <td>@Model.FullName</td>
+                </tr>
+                <tr>
+                    <th scope="col">Kullanıcı Adı</th>
+                    <td>@Model.UserName</td>
+                </tr>
+                <tr>
+                    <th scope="col">E-Posta</th>
+                    <td>@Model.Email</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
